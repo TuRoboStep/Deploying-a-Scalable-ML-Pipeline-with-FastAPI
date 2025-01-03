@@ -3,6 +3,7 @@ import os
 
 import pandas as pd
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 from ml.data import apply_label, process_data
@@ -35,6 +36,15 @@ model = load_model(path)
 
 # create a RESTful API using FastAPI
 app = FastAPI()
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change this to the specific origins you want to allow
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # create a GET on the root giving a welcome message
 @app.get("/")
