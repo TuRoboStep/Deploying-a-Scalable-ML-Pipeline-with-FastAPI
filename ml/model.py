@@ -81,20 +81,12 @@ def save_model(model, path):
     """
     with open(path, 'wb') as f:
         pickle.dump(model, f)
-    # with open(encoder_path, 'wb') as f:
-    #     pickle.dump(encoder, f)
-    # with open(lb_path, 'wb') as f:
-    #     pickle.dump(lb, f)
 
-def load_model(path):
+def load_model(path, ):
     """ Loads pickle file from `path` and returns it."""
     with open(path, 'rb') as f:
         model = pickle.load(f)
-    # with open(encoder_path, 'rb') as f:
-    #     encoder = pickle.load(f)
-    # with open(lb_path, 'rb') as f:
-    #     lb = pickle.load(f)
-    return model #, encoder, lb
+    return model
 
 
 def performance_on_categorical_slice(
